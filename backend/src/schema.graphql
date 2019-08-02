@@ -1,0 +1,15 @@
+# import * from './generated/prisma.graphql'
+
+type inputMessage {
+  message: String
+}
+
+type Mutation {
+  CreateData(description: String!, date: String!, price: Int!): Data!
+  UpdateData(description: String, date: String, price: Int, id: String): Data!
+}
+
+type Query {
+  datas(where: DataWhereInput): [Data]!
+  bankNotes(date: [String!]!, titles: [String!]!, balance: String!): [Data]!
+}

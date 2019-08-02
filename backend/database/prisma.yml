@@ -1,0 +1,9 @@
+endpoint: "https://eu1.prisma.sh/martijn/balans/dev"
+# Points to the file that holds your data model
+datamodel: datamodel.prisma
+# You can only access the API when providing JWTs that are signed with this secret
+secret: "omgplzdonttellanyone"
+# Deploy hook
+hooks:
+  post-deploy:
+    - graphql get-schema --project database

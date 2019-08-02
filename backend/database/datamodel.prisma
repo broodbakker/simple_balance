@@ -1,0 +1,7 @@
+type Data{
+    id: ID! @id
+    date:String!
+    price:Int!
+    balance:Boolean!
+    description:String!
+}

@@ -1,0 +1,339 @@
+# source: https://eu1.prisma.sh/martijn/balans/dev
+# timestamp: Wed Jul 17 2019 14:42:35 GMT+0200 (CEST)
+
+type AggregateData {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type Data implements Node {
+  id: ID!
+  date: String!
+  price: Int!
+  balance: Boolean!
+  description: String!
+}
+
+"""A connection to a list of items."""
+type DataConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [DataEdge]!
+  aggregate: AggregateData!
+}
+
+input DataCreateInput {
+  id: ID
+  date: String!
+  price: Int!
+  balance: Boolean!
+  description: String!
+}
+
+"""An edge in a connection."""
+type DataEdge {
+  """The item at the end of the edge."""
+  node: Data!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum DataOrderByInput {
+  id_ASC
+  id_DESC
+  date_ASC
+  date_DESC
+  price_ASC
+  price_DESC
+  balance_ASC
+  balance_DESC
+  description_ASC
+  description_DESC
+}
+
+type DataPreviousValues {
+  id: ID!
+  date: String!
+  price: Int!
+  balance: Boolean!
+  description: String!
+}
+
+type DataSubscriptionPayload {
+  mutation: MutationType!
+  node: Data
+  updatedFields: [String!]
+  previousValues: DataPreviousValues
+}
+
+input DataSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DataSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DataSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DataSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: DataWhereInput
+}
+
+input DataUpdateInput {
+  date: String
+  price: Int
+  balance: Boolean
+  description: String
+}
+
+input DataUpdateManyMutationInput {
+  date: String
+  price: Int
+  balance: Boolean
+  description: String
+}
+
+input DataWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DataWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DataWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DataWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  date: String
+
+  """All values that are not equal to given value."""
+  date_not: String
+
+  """All values that are contained in given list."""
+  date_in: [String!]
+
+  """All values that are not contained in given list."""
+  date_not_in: [String!]
+
+  """All values less than the given value."""
+  date_lt: String
+
+  """All values less than or equal the given value."""
+  date_lte: String
+
+  """All values greater than the given value."""
+  date_gt: String
+
+  """All values greater than or equal the given value."""
+  date_gte: String
+
+  """All values containing the given string."""
+  date_contains: String
+
+  """All values not containing the given string."""
+  date_not_contains: String
+
+  """All values starting with the given string."""
+  date_starts_with: String
+
+  """All values not starting with the given string."""
+  date_not_starts_with: String
+
+  """All values ending with the given string."""
+  date_ends_with: String
+
+  """All values not ending with the given string."""
+  date_not_ends_with: String
+  price: Int
+
+  """All values that are not equal to given value."""
+  price_not: Int
+
+  """All values that are contained in given list."""
+  price_in: [Int!]
+
+  """All values that are not contained in given list."""
+  price_not_in: [Int!]
+
+  """All values less than the given value."""
+  price_lt: Int
+
+  """All values less than or equal the given value."""
+  price_lte: Int
+
+  """All values greater than the given value."""
+  price_gt: Int
+
+  """All values greater than or equal the given value."""
+  price_gte: Int
+  balance: Boolean
+
+  """All values that are not equal to given value."""
+  balance_not: Boolean
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+}
+
+input DataWhereUniqueInput {
+  id: ID
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createData(data: DataCreateInput!): Data!
+  updateData(data: DataUpdateInput!, where: DataWhereUniqueInput!): Data
+  deleteData(where: DataWhereUniqueInput!): Data
+  upsertData(where: DataWhereUniqueInput!, create: DataCreateInput!, update: DataUpdateInput!): Data!
+  updateManyDatas(data: DataUpdateManyMutationInput!, where: DataWhereInput): BatchPayload!
+  deleteManyDatas(where: DataWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  datas(where: DataWhereInput, orderBy: DataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Data]!
+  data(where: DataWhereUniqueInput!): Data
+  datasConnection(where: DataWhereInput, orderBy: DataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DataConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Subscription {
+  data(where: DataSubscriptionWhereInput): DataSubscriptionPayload
+}

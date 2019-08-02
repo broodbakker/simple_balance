@@ -1,0 +1,13 @@
+projects:
+  app:
+    schemaPath: src/schema.graphql
+    extensions:
+      endpoints:
+        default: process.env.FRONTEND_URL
+  database:
+    schemaPath: src/generated/prisma.graphql
+    extensions:
+      prisma: database/prisma.yml
+  generates:
+    src/types.ts:
+      - typescript
